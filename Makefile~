@@ -1,0 +1,28 @@
+#OBJS specifies which files to compile as part of the project
+OBJS = main.cpp
+OBJS += Engine/Engine.cpp
+OBJS += Engine/AssetManager.cpp
+OBJS += Engine/EventHandler.cpp
+OBJS += Engine/CreditsManager.cpp
+OBJS += Engine/BubbleManager.cpp
+OBJS += Engine/LabelManager.cpp
+OBJS += Objects/Bubble.cpp
+OBJS += Objects/Player.cpp
+OBJS += Objects/Label.cpp
+
+#CC specifies which compiler we're using
+CC = g++
+
+#COMPILER_FLAGS specifies the additional compilation options we're using
+# -w suppresses all warnings
+COMPILER_FLAGS = `sdl2-config --cflags` -w -I./
+
+#LINKER_FLAGS specifies the libraries we're linking against
+LINKER_FLAGS = `sdl2-config --libs` -lSDL2 -lSDL2_image -lSDL2_ttf
+
+#OBJ_NAME specifies the name of our exectuable
+OBJ_NAME = fabamaq_challenge_v2
+
+#This is the target that compiles our executable
+all : $(OBJS)
+	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
